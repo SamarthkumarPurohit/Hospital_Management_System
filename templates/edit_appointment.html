@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Edit Appointment</h2>
+
+<form method="POST" class="form-box">
+    <input name="patient_name" value="{{ appt.patient_name }}" required>
+    <input name="doctor" value="{{ appt.doctor }}" required>
+    <input type="date" name="date" value="{{ appt.date }}" required>
+    <input type="time" name="time" value="{{ appt.time }}" required>
+
+    <select name="status">
+        <option value="Scheduled" {% if appt.status=='Scheduled' %}selected{% endif %}>Scheduled</option>
+        <option value="Completed" {% if appt.status=='Completed' %}selected{% endif %}>Completed</option>
+        <option value="Cancelled" {% if appt.status=='Cancelled' %}selected{% endif %}>Cancelled</option>
+    </select>
+
+    <button>Update Appointment</button>
+</form>
+
+{% endblock %}

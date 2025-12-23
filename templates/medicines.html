@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Medicines</h2>
+
+<form method="POST" class="form-box">
+    <input name="name" placeholder="Name" required>
+    <input name="category" placeholder="Category" required>
+    <input name="quantity" type="number" placeholder="Quantity" required>
+    <input name="price" type="number" step="0.01" placeholder="Price" required>
+    <input type="date" name="expiry" required>
+    <input name="manufacturer" placeholder="Manufacturer" required>
+    <button>Add Medicine</button>
+</form>
+
+<table>
+<tr>
+    <th>Name</th><th>Category</th><th>Qty</th>
+    <th>Price</th><th>Expiry</th><th>Action</th>
+</tr>
+{% for m in medicines %}
+<tr>
+    <td>{{ m.name }}</td>
+    <td>{{ m.category }}</td>
+    <td>{{ m.quantity }}</td>
+    <td>{{ m.price }}</td>
+    <td>{{ m.expiry }}</td>
+    <td><a class="edit-btn" href="/edit_medicine/{{ m.id }}">Edit</a></td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

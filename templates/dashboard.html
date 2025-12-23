@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<div class="cards">
+    <div class="card">Total Patients<br><b>{{ total_patients }}</b></div>
+    <div class="card">Appointments<br><b>{{ total_appointments }}</b></div>
+    <div class="card">Medicines<br><b>{{ total_medicines }}</b></div>
+    <div class="card">Pending Bills<br><b>{{ pending_bills }}</b></div>
+    <div class="card revenue">Revenue<br><b>₹{{ total_revenue }}</b></div>
+</div>
+
+<h3>Recent Appointments</h3>
+
+<table>
+<tr>
+    <th>Patient</th>
+    <th>Doctor</th>
+    <th>Date</th>
+    <th>Status</th>
+</tr>
+{% for a in recent_appointments %}
+<tr>
+    <td>{{ a.patient_name }}</td>
+    <td>{{ a.doctor }}</td>
+    <td>{{ a.date }}</td>
+    <td class="green">{{ a.status }}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

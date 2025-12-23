@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Edit Patient</h2>
+
+<form method="POST" class="form-box">
+    <input name="name" value="{{ patient.name }}" required>
+    <input name="age" type="number" value="{{ patient.age }}" required>
+
+    <select name="gender" required>
+        <option value="Male" {% if patient.gender=='Male' %}selected{% endif %}>Male</option>
+        <option value="Female" {% if patient.gender=='Female' %}selected{% endif %}>Female</option>
+        <option value="Other" {% if patient.gender=='Other' %}selected{% endif %}>Other</option>
+    </select>
+
+    <input name="contact" value="{{ patient.contact }}" required>
+    <input name="disease" value="{{ patient.disease }}" required>
+    <button>Update Patient</button>
+</form>
+
+{% endblock %}

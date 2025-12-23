@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Billing</h2>
+
+<form method="POST" class="form-box">
+    <input name="patient_name" placeholder="Patient Name" required>
+    <input name="items" placeholder="Services" required>
+    <input name="amount" type="number" placeholder="Amount" required>
+    <select name="status">
+        <option>Paid</option>
+        <option>Pending</option>
+    </select>
+    <button>Create Bill</button>
+</form>
+
+<table>
+<tr>
+    <th>Patient</th><th>Items</th>
+    <th>Amount</th><th>Date</th>
+    <th>Status</th><th>Action</th>
+</tr>
+{% for b in bills %}
+<tr>
+    <td>{{ b.patient_name }}</td>
+    <td>{{ b.items }}</td>
+    <td>₹{{ b.amount }}</td>
+    <td>{{ b.bill_date }}</td>
+    <td class="{% if b.status=='Paid' %}green{% else %}orange{% endif %}">
+        {{ b.status }}
+    </td>
+    <td><a class="edit-btn" href="/edit_bill/{{ b.id }}">Edit</a></td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

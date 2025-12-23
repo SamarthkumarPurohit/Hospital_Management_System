@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Edit Bill</h2>
+
+<form method="POST" class="form-box">
+    <input name="patient_name" value="{{ bill.patient_name }}" required>
+    <input name="items" value="{{ bill.items }}" required>
+    <input name="amount" type="number" value="{{ bill.amount }}" required>
+    <select name="status">
+        <option value="Paid" {% if bill.status=='Paid' %}selected{% endif %}>Paid</option>
+        <option value="Pending" {% if bill.status=='Pending' %}selected{% endif %}>Pending</option>
+    </select>
+    <button>Update Bill</button>
+</form>
+
+{% endblock %}

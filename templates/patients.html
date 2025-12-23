@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Patients</h2>
+
+<form method="POST" class="form-box">
+    <input name="name" placeholder="Name" required>
+    <input name="age" type="number" placeholder="Age" required>
+
+    <select name="gender" required>
+        <option value="">Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+    </select>
+
+    <input name="contact" placeholder="Contact" required>
+    <input name="disease" placeholder="Disease" required>
+    <button>Add Patient</button>
+</form>
+
+<table>
+<tr>
+    <th>Name</th><th>Age</th><th>Gender</th>
+    <th>Contact</th><th>Disease</th><th>Action</th>
+</tr>
+{% for p in patients %}
+<tr>
+    <td>{{ p.name }}</td>
+    <td>{{ p.age }}</td>
+    <td>{{ p.gender }}</td>
+    <td>{{ p.contact }}</td>
+    <td>{{ p.disease }}</td>
+    <td><a class="edit-btn" href="/edit_patient/{{ p.id }}">Edit</a></td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Appointments</h2>
+
+<form method="POST" class="form-box">
+    <input name="patient_name" placeholder="Patient Name" required>
+    <input name="doctor" placeholder="Doctor Name" required>
+    <input type="date" name="date" required>
+    <input type="time" name="time" required>
+    <button>Schedule</button>
+</form>
+
+<table>
+<tr>
+    <th>Patient</th><th>Doctor</th>
+    <th>Date</th><th>Time</th>
+    <th>Status</th><th>Action</th>
+</tr>
+{% for a in appointments %}
+<tr>
+    <td>{{ a.patient_name }}</td>
+    <td>{{ a.doctor }}</td>
+    <td>{{ a.date }}</td>
+    <td>{{ a.time }}</td>
+    <td class="green">{{ a.status }}</td>
+    <td><a class="edit-btn" href="/edit_appointment/{{ a.id }}">Edit</a></td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

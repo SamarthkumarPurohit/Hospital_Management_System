@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Edit Medicine</h2>
+
+<form method="POST" class="form-box">
+    <input name="name" value="{{ med.name }}" required>
+    <input name="category" value="{{ med.category }}" required>
+    <input name="quantity" type="number" value="{{ med.quantity }}" required>
+    <input name="price" type="number" step="0.01" value="{{ med.price }}" required>
+    <input type="date" name="expiry" value="{{ med.expiry }}" required>
+    <input name="manufacturer" value="{{ med.manufacturer }}" required>
+    <button>Update Medicine</button>
+</form>
+
+{% endblock %}
